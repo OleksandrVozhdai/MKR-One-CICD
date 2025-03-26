@@ -19,5 +19,9 @@ class TestPriceChange(unittest.TestCase):
         price_changes = get_price_changes('nonexistent_file.txt', "Товар 1")
         self.assertEqual(len(price_changes), 0)
 
+    def test_no_price_change_outside_last_month(self):
+        price_changes = get_price_changes('products.txt', "Product2")
+        self.assertEqual(len(price_changes), 0)
+
 if __name__ == '__main__':
     unittest.main()
